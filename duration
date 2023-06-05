@@ -1,0 +1,8 @@
+function drive (origin,destination,API_KEY) {
+  var url = 'https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=' + origin + '&destinations=' + destination + '&key=' + API_KEY;
+  var response = UrlFetchApp.fetch(url,  {'muteHttpExceptions': true});
+  var obj = JSON.parse(response.getContentText()); 
+  var res = obj.rows[0].elements[0].duration.value
+  return res
+  Utilities.sleep(400)
+}
